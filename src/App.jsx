@@ -1,4 +1,4 @@
-import "./utils/darkMode.js"
+import "./utils/darkMode.js";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import TodoComputed from "./components/TodoComputed";
@@ -6,15 +6,14 @@ import TodoCreate from "./components/TodoCreate";
 import TodoFilter from "./components/TodoFilter";
 import TodoList from "./components/TodoList";
 
-const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || []
+const initialStateTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const App = () => {
   const [todos, setTodos] = useState(initialStateTodos);
-  
 
-  useEffect(()=>{
-  localStorage.setItem('todos', JSON.stringify(todos))
-  },[todos])
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const createTodo = (title) => {
     const newTodo = {
@@ -63,9 +62,9 @@ const App = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat  dark:bg-slate-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] ">
+      <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat  dark:bg-slate-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] md:bg-[url('./assets/images/bg-desktop-light.jpg')] md:dark:bg-[url('./assets/images/bg-desktop-dark.jpg')]">
         <Header />
-        <main className="container mx-auto mt-8 px-4">
+        <main className="container mx-auto mt-8 px-4 md:max-w-xl">
           <TodoCreate createTodo={createTodo} />
 
           <TodoList
