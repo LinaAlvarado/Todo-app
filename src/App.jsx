@@ -1,31 +1,20 @@
 import "./utils/darkMode.js"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import TodoComputed from "./components/TodoComputed";
 import TodoCreate from "./components/TodoCreate";
 import TodoFilter from "./components/TodoFilter";
 import TodoList from "./components/TodoList";
 
-const initialStateTodos = [
-  {
-    id: 1,
-    title: "Go to gym",
-    completed: false,
-  },
-  {
-    id: 2,
-    title: "Go to mall",
-    completed: false,
-  },
-  {
-    id: 3,
-    title: "do the cake",
-    completed: true,
-  },
-];
+const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || []
 
 const App = () => {
   const [todos, setTodos] = useState(initialStateTodos);
+  
+
+  useEffect(()=>{
+  localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos])
 
   const createTodo = (title) => {
     const newTodo = {
