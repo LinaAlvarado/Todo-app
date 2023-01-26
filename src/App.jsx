@@ -53,6 +53,23 @@ const App = () => {
   const removeTodosCompleted = () => {
     setTodos(todos.filter((todo) => todo.completed !== true));
   };
+  
+  const [filter, setFilter] = useState("all");
+
+  const changeFilter = (filter)=>{
+    setFilter(filter);
+  }
+
+  const filterTodos = () => {
+    switch (filter){
+        case "all":
+           return todos;
+        case "active":
+            return todos.filter((todo) =>!todo.completed);
+        case "completed":
+            return todos.filter((todo) => todo.completed);
+    }
+  }
 
   return (
     <>
@@ -62,7 +79,7 @@ const App = () => {
           <TodoCreate createTodo={createTodo} />
 
           <TodoList
-            todos={todos}
+            todos={filterTodos()}
             removeTodo={removeTodo}
             updateTodo={updateTodo}
           />
@@ -72,7 +89,7 @@ const App = () => {
             removeTodosCompleted={removeTodosCompleted}
           />
 
-          <TodoFilter />
+          <TodoFilter changeFilter={changeFilter} filter={filter} />
         </main>
         <footer className="mt-8 text-center text-gray-400">
           Drag and drop to reorder list
