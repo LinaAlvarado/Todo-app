@@ -4,7 +4,7 @@ import IconCross from "./icons/IconCross";
 const TodoItem = ({ todo, removeTodo, updateTodo }) => {
   const { id, title, completed } = todo;
   return (
-    <article className="flex gap-4 border-b border-b-gray-300 py-4 px-4">
+    <article className="flex gap-4 border-b border-b-gray-300 py-4 px-4  dark:border-b-gray-600 ">
       <button
         onClick={() => {
           updateTodo(id);
@@ -17,7 +17,7 @@ const TodoItem = ({ todo, removeTodo, updateTodo }) => {
       >
         {completed && <IconCheck />}
       </button>
-      <p className={`grow text-gray-600 ${completed && "line-through"}`}>
+      <p className={`grow text-gray-600 ${completed && "line-through"} dark:text-gray-400 `}>
         {title}
       </p>
       <button

@@ -1,3 +1,4 @@
+import "./utils/darkMode.js"
 import { useState } from "react";
 import Header from "./components/Header";
 import TodoComputed from "./components/TodoComputed";
@@ -53,27 +54,27 @@ const App = () => {
   const removeTodosCompleted = () => {
     setTodos(todos.filter((todo) => todo.completed !== true));
   };
-  
+
   const [filter, setFilter] = useState("all");
 
-  const changeFilter = (filter)=>{
+  const changeFilter = (filter) => {
     setFilter(filter);
-  }
+  };
 
   const filterTodos = () => {
-    switch (filter){
-        case "all":
-           return todos;
-        case "active":
-            return todos.filter((todo) =>!todo.completed);
-        case "completed":
-            return todos.filter((todo) => todo.completed);
+    switch (filter) {
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter((todo) => todo.completed);
     }
-  }
+  };
 
   return (
     <>
-      <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat">
+      <div className="min-h-screen bg-gray-200 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat  dark:bg-slate-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] ">
         <Header />
         <main className="container mx-auto mt-8 px-4">
           <TodoCreate createTodo={createTodo} />
