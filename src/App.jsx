@@ -81,7 +81,8 @@ const App = () => {
           <TodoFilter changeFilter={changeFilter} filter={filter} />
         </main>
         <footer className="mt-8 text-center text-gray-400">
-          Drag and drop to reorder list
+          {/* Drag and drop to reorder list */}
+          Curso React Udemy - Lina A. 
         </footer>
       </div>
     </>
